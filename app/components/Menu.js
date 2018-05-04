@@ -9,11 +9,14 @@ class Menu extends React.Component {
   }
   render() {
     return (
-      <ul className="nav justify-content-end">
-        <li className="nav-item">
-          <WeatherForm />
-        </li>
-      </ul>
+      <nav>
+        <div className="nav-wrapper">
+          <a href="" className="brand-logo">React Weather App</a>
+          <ul className="right hide-on-med-and-down">
+            <li><a href=""><i className="material-icons right">view_module</i>Link with Right Icon</a></li>
+          </ul>
+        </div>
+      </nav>
     )
   }
 }

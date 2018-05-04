@@ -23,16 +23,12 @@ class App extends React.Component {
         <div className="container">
           <Menu />
           <br/>
-          <div className="row">
-            <div className="col-sm text-center">
-              <Switch>
-                <Route exact path ='/' component={Home} />
-                <Route render={function() {
-                    return <p>Not Found</p>
-                  }} />
-              </Switch>
-            </div>
-          </div>
+          <Switch>
+            <Route exact path ='/' component={Home} />
+            <Route render={function() {
+                return <p>Not Found</p>
+              }} />
+          </Switch>
         </div>
       </Router>
     )
