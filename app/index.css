@@ -17,3 +17,15 @@ nav {
 .btn-block {
   width: 100%;
 }
+
+@media only screen and (max-width: 600px) {
+  nav {
+    padding: 0;
+  }
+  nav a {
+    font-size: 18px;
+  }
+  .jumbotron {
+    padding: 50px 25px;
+  }
+}

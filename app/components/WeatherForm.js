@@ -25,7 +25,7 @@ class WeatherForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     console.log('Dilly Dilly');
-    api.fetchWeather()
+    api.fetchWeather(this.state.query)
       .then(function (weather) {
         this.setState(function () {
           return {
@@ -40,7 +40,7 @@ class WeatherForm extends React.Component {
       <div className="row">
         <form className="col s12" onSubmit={this.handleSubmit}>
           <div className="row">
-            <div className="input-field col s6 offset-s3">
+            <div className="input-field col m6 offset-m3 s12">
               <i className="material-icons prefix">home</i>
               <input id="icon_prefix" type="text" className="validate" value={this.state.query}
           onChange={this.handleChange}/>
