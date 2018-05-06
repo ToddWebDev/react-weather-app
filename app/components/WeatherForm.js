@@ -1,5 +1,6 @@
 var React = require('react');
 var api = require('../utils/api');
+var PropTypes = require('prop-types');
 
 class WeatherForm extends React.Component {
   constructor(props){
@@ -53,5 +54,11 @@ class WeatherForm extends React.Component {
     )
   }
 }
+
+WeatherForm.propTypes = {
+  zipcode: PropTypes.string,
+  weather: PropTypes.object
+}
+
 
 module.exports = WeatherForm;
