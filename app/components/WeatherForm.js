@@ -6,7 +6,7 @@ class WeatherForm extends React.Component {
     super(props)
     
     this.state = {
-      query: '',
+      zipcode: '',
       weather: {}
     }
    
@@ -18,20 +18,16 @@ class WeatherForm extends React.Component {
     
     this.setState(function() {
       return {
-        query: value
+        zipcode: value
       }
     })
   }
   handleSubmit(event) {
     event.preventDefault()
     console.log('Dilly Dilly');
-    api.fetchWeather(this.state.query)
+    api.getCurrentWeather(this.state.zipcode)
       .then(function (weather) {
-        this.setState(function () {
-          return {
-            weather: weather
-          }
-        });
+        console.log(weather);
       }.bind(this));
 
   }
