@@ -45,8 +45,8 @@ class WeatherForm extends React.Component {
             </div>
           </div>
           <div className="row">
-            <div className="col s6 offset-s3">
-              <button type="submit"><a className="waves-effect waves-light btn-large btn-block">Get My Weather</a></button>
+            <div className="col m6 offset-m3 s12">
+              <button type="submit" className="btn waves-effect waves-light btn-large btn-block">Get My Weather</button>
             </div>
           </div>
         </form>
