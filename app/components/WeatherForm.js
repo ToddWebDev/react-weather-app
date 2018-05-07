@@ -1,7 +1,6 @@
 var React = require('react');
 var api = require('../utils/api');
 var PropTypes = require('prop-types');
-//var Redirect = require('react-router-dom');
 import {Redirect} from 'react-router-dom';
 
 
@@ -35,7 +34,8 @@ class WeatherForm extends React.Component {
         console.log(weather);
         this.setState(function() {
           return {
-            toForecast: true
+            toForecast: true,
+            weather: weather
           }
         })
       }.bind(this));
@@ -47,14 +47,16 @@ class WeatherForm extends React.Component {
     }
 
     return (
-      <div className="row">
+      <div className="row jumbotron">
+        <h1>What's My Weather?</h1>
+        <br/>
         <form className="col s12" onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="input-field col m6 offset-m3 s12">
               <i className="material-icons prefix">home</i>
               <input id="icon_prefix" type="text" className="validate" value={this.state.query}
           onChange={this.handleChange}/>
-              <label htmlFor="icon_prefix">Enter City</label>
+              <label htmlFor="icon_prefix">Enter City Name</label>
             </div>
           </div>
           <div className="row">

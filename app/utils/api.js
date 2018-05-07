@@ -19,7 +19,8 @@ function getQueryStringData (city) {
     q: city,
     type: 'accurate',
     APPID: _APIKEY,
-    cnt: 5
+    cnt: 5,
+    units: 'imperial'
   }
 }
 
@@ -34,7 +35,7 @@ function getCurrentWeather (city) {
     })
 }
 
-function getForcast (city) {
+function getForecast (city) {
   var queryStringData = getQueryStringData(city);
   var url = prepUrl('forecast/daily', queryStringData)
 
@@ -47,5 +48,5 @@ function getForcast (city) {
 
 module.exports = {
   getCurrentWeather: getCurrentWeather,
-  getForcast: getForcast
+  getForecast: getForecast
 };
