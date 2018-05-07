@@ -1,6 +1,9 @@
 var React = require('react');
 var api = require('../utils/api');
 var PropTypes = require('prop-types');
+//var Redirect = require('react-router-dom');
+import {Redirect} from 'react-router-dom';
+
 
 class WeatherForm extends React.Component {
   constructor(props){
@@ -8,7 +11,8 @@ class WeatherForm extends React.Component {
     
     this.state = {
       zipcode: '',
-      weather: {}
+      weather: {},
+      toForecast: false
     }
    
     this.handleChange = this.handleChange.bind(this)
@@ -29,10 +33,19 @@ class WeatherForm extends React.Component {
     api.getCurrentWeather(this.state.zipcode)
       .then(function (weather) {
         console.log(weather);
+        this.setState(function() {
+          return {
+            toForecast: true
+          }
+        })
       }.bind(this));
 
   }
   render () {
+    if (this.state.toForecast === true) {
+      return <Redirect to='/forecast' />
+    }
+
     return (
       <div className="row">
         <form className="col s12" onSubmit={this.handleSubmit}>
