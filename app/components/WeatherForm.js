@@ -1,7 +1,7 @@
-var React = require('react');
-var api = require('../utils/api');
-var PropTypes = require('prop-types');
-import {Redirect} from 'react-router-dom';
+import React from 'react'
+import {getCurrentWeather} from '../utils/api'
+import PropTypes from 'prop-types'
+import {Redirect} from 'react-router-dom'
 
 
 class WeatherForm extends React.Component {
@@ -20,17 +20,15 @@ class WeatherForm extends React.Component {
   handleChange(event) {
     var value = event.target.value
     
-    this.setState(function() {
-      return {
+    this.setState(() =>  ({
         zipcode: value
-      }
-    })
+    }))
   }
   handleSubmit(event) {
     event.preventDefault()
     console.log('Dilly Dilly');
-    api.getCurrentWeather(this.state.zipcode)
-      .then(function (weather) {
+    getCurrentWeather(this.state.zipcode)
+      .then((weather) => {
         console.log(weather);
         this.setState(function() {
           return {
@@ -38,7 +36,7 @@ class WeatherForm extends React.Component {
             weather: weather
           }
         })
-      }.bind(this));
+      });
 
   }
   render () {
@@ -76,4 +74,4 @@ WeatherForm.propTypes = {
 }
 
 
-module.exports = WeatherForm;
+export default WeatherForm;

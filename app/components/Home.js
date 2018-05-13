@@ -1,5 +1,5 @@
-var React = require('react');
-var WeatherForm = require('./WeatherForm');
+import React from 'react'
+import WeatherForm from './WeatherForm'
 
 class Home extends React.Component {
   render () {
@@ -9,4 +9,4 @@ class Home extends React.Component {
   }
 }
 
-module.exports = Home;
+export default Home;

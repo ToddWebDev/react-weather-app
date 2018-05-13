@@ -1,11 +1,8 @@
-var React = require('react');
-var Menu = require('./Menu');
-var Home = require('./Home');
-var Forecast = require('./Forecast');
-var ReactRouter = require('react-router-dom')
-var Router = ReactRouter.BrowserRouter
-var Route = ReactRouter.Route
-var Switch = ReactRouter.Switch
+import React from 'react'
+import Menu from './Menu'
+import Home from './Home'
+import Forecast from './Forecast'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 class App extends React.Component {
   //Component Lifecycle Hooks
@@ -20,7 +17,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <div className="container">
           <Menu />
           <br/>
@@ -32,9 +29,9 @@ class App extends React.Component {
               }} />
           </Switch>
         </div>
-      </Router>
+      </BrowserRouter>
     )
   }
 }
 
-module.exports = App;
+export default App;

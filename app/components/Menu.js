@@ -1,7 +1,7 @@
-var React = require('react');
-var PropTypes = require('prop-types');
-var api = require('../utils/api');
-var WeatherForm = require('./WeatherForm');
+import React from 'react'
+import PropTypes from 'prop-types'
+import api from '../utils/api'
+import WeatherForm from './WeatherForm'
 
 
 class Menu extends React.Component {
@@ -21,4 +21,4 @@ class Menu extends React.Component {
   }
 }
 
-module.exports = Menu;
+export default Menu;
