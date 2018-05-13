@@ -3,28 +3,24 @@ import {getCurrentWeather} from '../utils/api'
 import PropTypes from 'prop-types'
 import {Redirect} from 'react-router-dom'
 
-
 class WeatherForm extends React.Component {
-  constructor(props){
-    super(props)
-    
-    this.state = {
-      zipcode: '',
-      weather: {},
-      toForecast: false
-    }
-   
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+  static propTypes = {
+    zipcode: PropTypes.string,
+    weather: PropTypes.object
   }
-  handleChange(event) {
+  state = {
+    zipcode: '',
+    weather: {},
+    toForecast: false
+  }
+  handleChange = (event) => {
     var value = event.target.value
     
     this.setState(() =>  ({
         zipcode: value
     }))
   }
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault()
     console.log('Dilly Dilly');
     getCurrentWeather(this.state.zipcode)
@@ -67,11 +63,5 @@ class WeatherForm extends React.Component {
     )
   }
 }
-
-WeatherForm.propTypes = {
-  zipcode: PropTypes.string,
-  weather: PropTypes.object
-}
-
 
 export default WeatherForm;
