@@ -17,23 +17,22 @@ class WeatherForm extends React.Component {
     var value = event.target.value
     
     this.setState(() =>  ({
-        zipcode: value
+        zipcode: value,
+        isValid: false
     }))
   }
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log('Dilly Dilly');
-    getCurrentWeather(this.state.zipcode)
-      .then((weather) => {
-        console.log(weather);
-        this.setState(function() {
-          return {
-            toForecast: true,
-            weather: weather
-          }
-        })
-      });
-
+      getCurrentWeather(this.state.zipcode)
+        .then((weather) => {
+          console.log(weather);
+          this.setState(function() {
+            return {
+              toForecast: true,
+              weather: weather
+            }
+          })
+        });
   }
   render () {
     if (this.state.toForecast === true) {
@@ -49,7 +48,7 @@ class WeatherForm extends React.Component {
             <div className="input-field col m6 offset-m3 s12">
               <i className="material-icons prefix">home</i>
               <input id="icon_prefix" type="text" className="validate" value={this.state.query}
-          onChange={this.handleChange}/>
+          onChange={this.handleChange} required/>
               <label htmlFor="icon_prefix">Enter City Name</label>
             </div>
           </div>
