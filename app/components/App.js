@@ -1,6 +1,7 @@
 import React from 'react'
 import Menu from './Menu'
 import Home from './Home'
+import WeatherForm from './WeatherForm'
 import Forecast from './Forecast'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
@@ -22,7 +23,7 @@ class App extends React.Component {
           <Menu />
           <br/>
           <Switch>
-            <Route exact path ='/' component={Home} />
+            <Route exact path ='/' component={WeatherForm} />
             <Route path ='/forecast' component={Forecast} />
             <Route render={function() {
                 return <p>Not Found</p>
