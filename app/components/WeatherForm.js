@@ -19,6 +19,10 @@ function CurrentWeather (props) {
   )
 }
 
+CurrentWeather.propTypes = {
+  props: PropTypes.object
+};
+
 class WeatherForm extends React.Component {
   static propTypes = {
     zipcode: PropTypes.string,
