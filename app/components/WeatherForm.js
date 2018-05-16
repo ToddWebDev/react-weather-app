@@ -14,18 +14,23 @@ function CurrentWeather (props) {
           <h5 className="uppercase">{props.weather.weather[0].description}</h5>
           <div className="flex-box">
             <div className="flex-item">
-              <h5 className="uppercase">Current Temperature</h5>
+              <h5 className="uppercase">Current<br/> Temperature</h5>
               <p>{props.weather.main.temp}</p>
             </div>
             <div className="flex-item">
-              <h5 className="uppercase">High Temperature</h5>
+              <h5 className="uppercase">High<br/> Temperature</h5>
               <p>{props.weather.main.temp_max}</p>
             </div>
             <div className="flex-item">
-              <h5 className="uppercase">Low Temperature</h5>
+              <h5 className="uppercase">Low<br/> Temperature</h5>
               <p>{props.weather.main.temp_min}</p>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col s12">
+           <a href="" className="waves-effect waves-light btn">Start Over</a>
         </div>
       </div>
     </div>
