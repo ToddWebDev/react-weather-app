@@ -3,18 +3,20 @@ import {getCurrentWeather} from '../utils/api'
 import PropTypes from 'prop-types'
 import {Redirect} from 'react-router-dom'
 
-class CurrentWeather extends React.Component {
-  render() {
-    return (
-      <div className="container">
+function CurrentWeather (props) {
+  return (
+    <div className="container">
       <div className="row">
         <div className="col s12">
-          <h1>Current Weather for Place</h1>
+          <h1>Current Weather for {props.weather.name}</h1>
+          <h3>{props.weather.weather[0].description}</h3>
+          <p>{props.weather.main.temp} degrees</p>
+          <p>{props.weather.main.temp_min} degrees</p>
+          <p>{props.weather.main.temp_max} degrees</p>
         </div>
       </div>
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
 class WeatherForm extends React.Component {
@@ -78,7 +80,7 @@ class WeatherForm extends React.Component {
         </div>
         }
         {this.state.toCurrentWeather &&
-          <CurrentWeather />
+          <CurrentWeather weather={this.state.weather} />
         }
       </div>
     )
