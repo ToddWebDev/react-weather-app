@@ -4,15 +4,28 @@ import PropTypes from 'prop-types'
 import {Redirect} from 'react-router-dom'
 
 function CurrentWeather (props) {
+  var icon = props.weather.weather[0].icon;
   return (
     <div className="container">
       <div className="row">
         <div className="col s12">
-          <h1>Current Weather for {props.weather.name}</h1>
-          <h3>{props.weather.weather[0].description}</h3>
-          <p>{props.weather.main.temp} degrees</p>
-          <p>{props.weather.main.temp_min} degrees</p>
-          <p>{props.weather.main.temp_max} degrees</p>
+          <h3>Current Weather for <span className="uppercase">{props.weather.name}</span></h3>
+          <img className='weather' src={'./app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
+          <h5 className="uppercase">{props.weather.weather[0].description}</h5>
+          <div className="flex-box">
+            <div className="flex-item">
+              <h5 className="uppercase">Current Temperature</h5>
+              <p>{props.weather.main.temp}</p>
+            </div>
+            <div className="flex-item">
+              <h5 className="uppercase">High Temperature</h5>
+              <p>{props.weather.main.temp_max}</p>
+            </div>
+            <div className="flex-item">
+              <h5 className="uppercase">Low Temperature</h5>
+              <p>{props.weather.main.temp_min}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
