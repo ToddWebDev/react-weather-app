@@ -20,6 +20,10 @@ body {
   text-transform: uppercase;
 }
 
+.label {
+    margin-top: -30px;
+}
+
 .flex-box {
   display: flex;
   margin-top: 50px;
@@ -55,12 +59,22 @@ nav {
     text-align: center;
   }
   .jumbotron {
-    padding: 50px 0;
+    padding: 50px 15px;
+  }
+  .flex-box {
+    flex-direction: column;
+  }
+  .flex-item {
+    margin-bottom: 25px;
+  }
+  .label {
+    font-size: 18px;
+    margin-top: -20px;
   }
   .flex-item > h5 {
-    font-size: 10px;
+    font-size: 18px;
   }
   .flex-item > p {
-    font-size: 35px;
+    font-size: 30px;
   }
 }

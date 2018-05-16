@@ -15,22 +15,25 @@ function CurrentWeather (props) {
           <div className="flex-box">
             <div className="flex-item">
               <h5 className="uppercase">Current<br/> Temperature</h5>
-              <p>{props.weather.main.temp}</p>
+              <p className="red-text text-lighten-2">{props.weather.main.temp.toFixed(0)}</p>
+              <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
             </div>
             <div className="flex-item">
               <h5 className="uppercase">High<br/> Temperature</h5>
-              <p>{props.weather.main.temp_max}</p>
+              <p className="red-text text-lighten-2">{props.weather.main.temp_max.toFixed(0)}</p>
+              <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
             </div>
             <div className="flex-item">
               <h5 className="uppercase">Low<br/> Temperature</h5>
-              <p>{props.weather.main.temp_min}</p>
+              <p className="red-text text-lighten-2">{props.weather.main.temp_min.toFixed(0)}</p>
+              <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
             </div>
           </div>
         </div>
       </div>
       <div className="row">
         <div className="col s12">
-           <a href="" className="waves-effect waves-light btn">Start Over</a>
+           <a href="" className="waves-effect waves-light btn">Get More Weather</a>
         </div>
       </div>
     </div>
@@ -82,11 +85,11 @@ class WeatherForm extends React.Component {
       <div className="row jumbotron">
         {!this.state.toCurrentWeather &&
         <div>
-          <h1>What's My Weather?</h1>
+          <h1>What's the Weather?</h1>
           <br/>
-          <form className="col s12" onSubmit={this.handleSubmit}>
+          <form className="col xl4 offset-xl4 l8 offset-l2 m12 s12" onSubmit={this.handleSubmit}>
             <div className="row">
-              <div className="input-field col m6 offset-m3 s12">
+              <div className="input-field col s12">
                 <i className="material-icons prefix">home</i>
                 <input id="icon_prefix" type="text" className="validate" value={this.state.query}
             onChange={this.handleChange} required/>
@@ -94,8 +97,8 @@ class WeatherForm extends React.Component {
               </div>
             </div>
             <div className="row">
-              <div className="col m6 offset-m3 s12">
-                <button type="submit" className="btn waves-effect waves-light btn-large btn-block">Get My Weather</button>
+              <div className="col s12">
+                <button type="submit" className="btn waves-effect waves-light btn-large btn-block">Get the Weather</button>
               </div>
             </div>
           </form>

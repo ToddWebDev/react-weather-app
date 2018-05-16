@@ -19,7 +19,7 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="container">
+        <div className="container-fluid">
           <Menu />
           <br/>
           <Switch>
