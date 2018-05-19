@@ -5,6 +5,7 @@ import {Redirect, Link} from 'react-router-dom'
 
 function CurrentWeather (props) {
   var icon = props.weather.weather[0].icon;
+  console.log(props);
   return (
     <div className="container">
       <div className="row">
@@ -35,7 +36,7 @@ function CurrentWeather (props) {
       <br/>
       <div className="row">
         <div className="col s12">
-          <Link className='waves-effect waves-light btn-large' to='/forecast'>View Extended Forecast</Link>
+          <Link className='waves-effect waves-light btn-large' to={`/${props.weather.name}`}>View Extended Forecast</Link>
         </div>
       </div>
       <div className="row">
