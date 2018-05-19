@@ -1,7 +1,7 @@
 import React from 'react'
 import {getCurrentWeather} from '../utils/api'
 import PropTypes from 'prop-types'
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
 
 function CurrentWeather (props) {
   var icon = props.weather.weather[0].icon;
@@ -29,6 +29,13 @@ function CurrentWeather (props) {
               <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
             </div>
           </div>
+        </div>
+      </div>
+      <br/>
+      <br/>
+      <div className="row">
+        <div className="col s12">
+          <Link className='waves-effect waves-light btn-large' to='/forecast'>View Extended Forecast</Link>
         </div>
       </div>
       <div className="row">
