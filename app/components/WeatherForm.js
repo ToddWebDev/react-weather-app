@@ -1,11 +1,11 @@
 import React from 'react'
-import {getCurrentWeather} from '../utils/api'
+import {getCurrentWeather, getForecast} from '../utils/api'
 import PropTypes from 'prop-types'
 import {Redirect, Link} from 'react-router-dom'
 
+//Stateless Functional Component
 function CurrentWeather (props) {
   var icon = props.weather.weather[0].icon;
-  console.log(props);
   return (
     <div className="container">
       <div className="row">
@@ -32,18 +32,6 @@ function CurrentWeather (props) {
           </div>
         </div>
       </div>
-      <br/>
-      <br/>
-      <div className="row">
-        <div className="col s12">
-          <Link className='waves-effect waves-light btn-large' to={`/${props.weather.name}`}>View Extended Forecast</Link>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col s12">
-           <a href="" className="waves-effect waves-light btn">Get More Weather</a>
-        </div>
-      </div>
     </div>
   )
 }
@@ -52,16 +40,47 @@ CurrentWeather.propTypes = {
   props: PropTypes.object
 };
 
+//Stateless Functional Component
+function Forecast(props) {
+  return (
+    <div className="row jumbotron">
+      <div className="col s12">
+        <h3>5 Day Forecast for <span className="uppercase">{props.weather.city.name}</span></h3>
+        <ul className="flex-box">
+          {props.weather.list.map((day) => (
+            <li className="flex-item" key={day.dt}>
+              <h5 className="uppercase">{day.weather[0].description}</h5>
+              <img className='weather small' src={'./app/images/weather-icons/' + day.weather[0].icon + '.svg'} alt='Weather' />
+              <br/>
+              <p className="red-text text-lighten-2">{day.main.temp.toFixed(0)}</p>
+              <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+Forecast.propTypes = {
+  props: PropTypes.object
+};
+
+//Stateful Component that handles view toggles
 class WeatherForm extends React.Component {
   static propTypes = {
     zipcode: PropTypes.string,
-    weather: PropTypes.object
+    weather: PropTypes.object,
+    forecast: PropTypes.object,
   }
   state = {
     zipcode: '',
     weather: {},
+    forecast: {},
+    toCurrentWeather: false,
     toForecast: false
   }
+  //Bind Form to state
   handleChange = (event) => {
     var value = event.target.value
     
@@ -70,11 +89,12 @@ class WeatherForm extends React.Component {
         isValid: false
     }))
   }
+  //Call API on form submit
   handleSubmit = (event) => {
     event.preventDefault()
       getCurrentWeather(this.state.zipcode)
         .then((weather) => {
-          console.log(weather);
+          console.info('CURRENT WEATEHER: ', weather);
           this.setState(function() {
             return {
               toCurrentWeather: true,
@@ -84,14 +104,32 @@ class WeatherForm extends React.Component {
           })
         });
   }
+  //Call API on button submit
+  goToForecast = () => {
+    getForecast(this.state.zipcode)
+      .then((forecast) => {
+        console.info('FORECAST: ', forecast);
+        this.setState(function() {
+          return {
+            toCurrentWeather: false,
+            toForecast: true,
+            forecast: forecast
+          }
+        })
+      });
+  }
+  goToHome = () => {
+    this.setState(() => {
+      return {
+        toCurrentWeather: false,
+        toForecast: false,
+      }
+    })
+  }
   render () {
-    if (this.state.toForecast === true) {
-      return <Redirect to='/forecast' />
-    }
-
     return (
       <div className="row jumbotron">
-        {!this.state.toCurrentWeather &&
+        {!this.state.toCurrentWeather && !this.state.toForecast &&
         <div>
           <h1>What's the Weather?</h1>
           <br/>
@@ -113,8 +151,30 @@ class WeatherForm extends React.Component {
         </div>
         }
         {this.state.toCurrentWeather &&
-          <CurrentWeather weather={this.state.weather} />
+          <div>
+            <CurrentWeather weather={this.state.weather} />
+            <br/>
+            <br/>
+            <div className="row">
+              <div className="col s12">
+                <a onClick={this.goToForecast} className='waves-effect waves-light btn-large'>View Extended Forecast</a>
+              </div>
+            </div>
+          </div>
         }
+        {this.state.toForecast &&
+          <div>
+            <Forecast weather={this.state.forecast} />
+            <br/>
+            <br/>
+            <div className="row">
+              <div className="col s12">
+                 <a className="waves-effect waves-light btn-large" onClick={this.goToHome}>Get More Weather</a>
+              </div>
+            </div>
+          </div>
+        }
+        
       </div>
     )
   }
