@@ -1,10 +1,9 @@
 import React from 'react';
 import {getForecast} from '../utils/api'
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 
 function ForecastDetail(props) {
-  console.log(props);
   return (
     <div className="row">
       <div className="col s12">
@@ -17,6 +16,10 @@ function ForecastDetail(props) {
       </div>
     </div>
   )
+}
+
+ForecastDetail.propTypes = {
+   weather: PropTypes.object.isRequired,
 }
 
 class Forecast extends React.Component {
@@ -40,6 +43,9 @@ class Forecast extends React.Component {
         });
     }
   render() {
+    if (this.state.weather === undefined) {
+      return <Redirect to='/' />;
+    }
     return (
       <div className="container">
       <div className="row">
