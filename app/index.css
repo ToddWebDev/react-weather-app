@@ -48,6 +48,10 @@ nav {
   padding: 0 20px 10px;
 }
 
+.tabs {
+  box-shadow: none;
+}
+
 .btn-block {
   width: 100%;
 }
@@ -62,6 +66,9 @@ nav {
   nav .brand-logo {
     width: 100%;
     text-align: center;
+  }
+  .tabs .tab a {
+    padding: 0;
   }
   .jumbotron {
     padding: 50px 15px;

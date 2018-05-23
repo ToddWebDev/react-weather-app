@@ -2,13 +2,14 @@ import React from 'react'
 import {getCurrentWeather, getForecast} from '../utils/api'
 import PropTypes from 'prop-types'
 import {Redirect, Link} from 'react-router-dom'
+import {Tabs, Tab} from 'react-materialize'
 
 //Stateless Functional Component
 function CurrentWeather (props) {
   var icon = props.weather.weather[0].icon;
   return (
     <div className="container">
-      <div className="row">
+      <div className="row jumbotron">
         <div className="col s12">
           <h3>Current Weather for <span className="uppercase">{props.weather.name}</span></h3>
           <img className='weather' src={'./app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
@@ -118,6 +119,14 @@ class WeatherForm extends React.Component {
         })
       });
   }
+  goToWeather = () => {
+    this.setState(() => {
+      return {
+        toCurrentWeather: true,
+        toForecast: false,
+      }
+    })
+  }
   goToHome = () => {
     this.setState(() => {
       return {
@@ -152,26 +161,20 @@ class WeatherForm extends React.Component {
         }
         {this.state.toCurrentWeather &&
           <div>
+            <Tabs onChange={this.goToForecast}>
+              <Tab title="Current Weather" active></Tab>
+              <Tab title="Extended Forecast" ></Tab>
+            </Tabs>
             <CurrentWeather weather={this.state.weather} />
-            <br/>
-            <br/>
-            <div className="row">
-              <div className="col s12">
-                <a onClick={this.goToForecast} className='waves-effect waves-light btn-large'>View Extended Forecast</a>
-              </div>
-            </div>
           </div>
         }
         {this.state.toForecast &&
           <div>
+            <Tabs onChange={this.goToWeather}>
+              <Tab title="Current Weather"></Tab>
+              <Tab title="Extended Forecast" active></Tab>
+            </Tabs>
             <Forecast weather={this.state.forecast} />
-            <br/>
-            <br/>
-            <div className="row">
-              <div className="col s12">
-                 <a className="waves-effect waves-light btn-large" onClick={this.goToHome}>Get More Weather</a>
-              </div>
-            </div>
           </div>
         }
         
