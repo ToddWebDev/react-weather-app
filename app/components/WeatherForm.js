@@ -2,7 +2,6 @@ import React from 'react'
 import {getCurrentWeather, getForecast} from '../utils/api'
 import PropTypes from 'prop-types'
 import {Redirect, Link} from 'react-router-dom'
-import {Tabs, Tab} from 'react-materialize'
 
 //Stateless Functional Component
 function CurrentWeather (props) {
@@ -67,6 +66,21 @@ Forecast.propTypes = {
   props: PropTypes.object
 };
 
+function Tabs (props) {
+  function changeTab() {
+    console.log('Ps: ', props)
+  }
+  let tabs = props.tabs;
+  return (
+    <ul className="tabs">
+      {tabs.map( (tab) => 
+        <li key={tab.id} className="tab col s3"><a className={tab.active  ? 'active' : ''} onClick={() => props.onTabChange(tab)}>{tab.name}</a></li>
+      )}
+    </ul>
+  )
+}
+
+
 //Stateful Component that handles view toggles
 class WeatherForm extends React.Component {
   static propTypes = {
@@ -79,7 +93,11 @@ class WeatherForm extends React.Component {
     weather: {},
     forecast: {},
     toCurrentWeather: false,
-    toForecast: false
+    toForecast: false,
+    tabs: [
+      {id: 1, name: 'Current Weather', active: true},
+      {id: 2, name: 'Extended Forecast', active: false}
+    ]
   }
   //Bind Form to state
   handleChange = (event) => {
@@ -114,7 +132,11 @@ class WeatherForm extends React.Component {
           return {
             toCurrentWeather: false,
             toForecast: true,
-            forecast: forecast
+            forecast: forecast,
+            tabs: [
+              {id: 1, name: 'Current Weather', active: false},
+              {id: 2, name: 'Extended Forecast', active: true}
+            ]
           }
         })
       });
@@ -124,8 +146,11 @@ class WeatherForm extends React.Component {
       return {
         toCurrentWeather: true,
         toForecast: false,
-      }
-    })
+        tabs: [
+          {id: 1, name: 'Current Weather', active: true},
+          {id: 2, name: 'Extended Forecast', active: false}
+        ]
+    }})
   }
   goToHome = () => {
     this.setState(() => {
@@ -134,6 +159,18 @@ class WeatherForm extends React.Component {
         toForecast: false,
       }
     })
+  }
+  handleTabChange = (tab) => {
+    if(tab.id === 1 && this.state.toCurrentWeather || tab.id === 2 && this.state.toForecast){
+      console.log('Tab already active.')
+    } else if (tab.id === 1 && this.state.toForecast) {
+      this.goToWeather();
+    } else if (tab.id === 2 && this.state.toCurrentWeather) {
+      this.goToForecast();
+    }
+  }
+  componentDidMount() {
+    M.AutoInit();
   }
   render () {
     return (
@@ -161,19 +198,19 @@ class WeatherForm extends React.Component {
         }
         {this.state.toCurrentWeather &&
           <div>
-            <Tabs onChange={this.goToForecast}>
-              <Tab title="Current Weather" active></Tab>
-              <Tab title="Extended Forecast" ></Tab>
-            </Tabs>
+            <Tabs 
+              tabs={this.state.tabs} 
+              onTabChange={this.handleTabChange}
+            />
             <CurrentWeather weather={this.state.weather} />
           </div>
         }
         {this.state.toForecast &&
           <div>
-            <Tabs onChange={this.goToWeather}>
-              <Tab title="Current Weather"></Tab>
-              <Tab title="Extended Forecast" active></Tab>
-            </Tabs>
+            <Tabs 
+              tabs={this.state.tabs} 
+              onTabChange={this.handleTabChange}
+            />
             <Forecast weather={this.state.forecast} />
           </div>
         }

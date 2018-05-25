@@ -52,6 +52,14 @@ nav {
   box-shadow: none;
 }
 
+.tabs .tab {
+  cursor: pointer;
+}
+
+.tabs .tab a.active {
+  border-bottom: 3px solid #ee6e73;
+}
+
 .btn-block {
   width: 100%;
 }
