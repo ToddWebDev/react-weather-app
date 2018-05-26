@@ -42,13 +42,15 @@ CurrentWeather.propTypes = {
 
 //Stateless Functional Component
 function Forecast(props) {
+  props.weather.list.forEach((day) => day.day = moment(day.dt_txt).format("dddd h:mm a"));
   return (
     <div className="row jumbotron">
       <div className="col s12">
-        <h3>5 Day Forecast for <span className="uppercase">{props.weather.city.name}</span></h3>
+        <h3>Extended Forecast for <span className="uppercase">{props.weather.city.name}</span></h3>
         <ul className="flex-box">
           {props.weather.list.map((day) => (
             <li className="flex-item" key={day.dt}>
+              <h5 className="uppercase small blue-grey-text text-lighten-4">{day.day}</h5>
               <h5 className="uppercase">{day.weather[0].description}</h5>
               <img className='weather small' src={'./app/images/weather-icons/' + day.weather[0].icon + '.svg'} alt='Weather' />
               <br/>
