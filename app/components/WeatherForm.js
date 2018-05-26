@@ -69,9 +69,6 @@ Forecast.propTypes = {
 };
 
 function Tabs (props) {
-  function changeTab() {
-    console.log('Ps: ', props)
-  }
   let tabs = props.tabs;
   return (
     <ul className="tabs">
@@ -81,6 +78,11 @@ function Tabs (props) {
     </ul>
   )
 }
+
+Tabs.propTypes = {
+  props: PropTypes.object
+};
+
 
 
 //Stateful Component that handles view toggles
@@ -154,14 +156,6 @@ class WeatherForm extends React.Component {
         ]
     }})
   }
-  goToHome = () => {
-    this.setState(() => {
-      return {
-        toCurrentWeather: false,
-        toForecast: false,
-      }
-    })
-  }
   handleTabChange = (tab) => {
     if(tab.id === 1 && this.state.toCurrentWeather || tab.id === 2 && this.state.toForecast){
       console.log('Tab already active.')
@@ -170,9 +164,6 @@ class WeatherForm extends React.Component {
     } else if (tab.id === 2 && this.state.toCurrentWeather) {
       this.goToForecast();
     }
-  }
-  componentDidMount() {
-    M.AutoInit();
   }
   render () {
     return (
