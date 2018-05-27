@@ -6,6 +6,9 @@ import {Redirect, Link} from 'react-router-dom'
 //Stateless Functional Component
 function CurrentWeather (props) {
   var icon = props.weather.weather[0].icon;
+  var zone = moment.parseZone(props.weather.sys.sunrise).utcOffset()
+  console.log(zone);
+  var sunrise = moment(props.weather.sys.sunrise).format("h:mm");
   return (
     <div className="container">
       <div className="row jumbotron">
@@ -28,6 +31,26 @@ function CurrentWeather (props) {
               <h5 className="uppercase">Low<br/> Temperature</h5>
               <p className="red-text text-lighten-2">{props.weather.main.temp_min.toFixed(0)}</p>
               <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col s12">
+          <div className="flex-box">
+            <div className="flex-item">
+              <h5 className="uppercase">Humidity</h5>
+              <p className="red-text text-lighten-2">{props.weather.main.humidity}%</p>
+            </div>
+            <div className="flex-item">
+              <h5 className="uppercase">Sunrise</h5>
+              <p className="red-text text-lighten-2">{sunrise}</p>
+              <h5 className="uppercase label red-text text-lighten-2">am</h5>
+            </div>
+            <div className="flex-item">
+              <h5 className="uppercase">Wind</h5>
+              <p className="red-text text-lighten-2">{props.weather.wind.speed}</p>
+              <h5 className="uppercase label red-text text-lighten-2">mph</h5>
             </div>
           </div>
         </div>
