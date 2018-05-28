@@ -6,9 +6,8 @@ import {Redirect, Link} from 'react-router-dom'
 //Stateless Functional Component
 function CurrentWeather (props) {
   var icon = props.weather.weather[0].icon;
-  var zone = moment.parseZone(props.weather.sys.sunrise).utcOffset()
-  console.log(zone);
-  var sunrise = moment(props.weather.sys.sunrise).format("h:mm");
+  var zone = props.weather.sys.sunrise + '-3:00'
+  var sunrise = moment(props.weather.sys.sunrise).utcOffset(props.weather.sys.sunrise).format("h:mm");
   return (
     <div className="container">
       <div className="row jumbotron">
