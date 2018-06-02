@@ -78,6 +78,10 @@ nav {
   margin-top: -50px;
 }
 
+i.material-icons {
+  font-size: 1.5em;
+}
+
 @media only screen and (max-width: 800px) {
   .label {
     margin-top: -20px;

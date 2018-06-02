@@ -8,6 +8,10 @@ function CurrentWeather (props) {
   var icon = props.weather.weather[0].icon;
   var zone = props.weather.sys.sunrise + '-3:00'
   var sunrise = moment(props.weather.sys.sunrise).utcOffset(props.weather.sys.sunrise).format("h:mm");
+  var rotate = {
+    transform: `rotate(${props.weather.wind.deg}deg)`
+  }
+ 
   return (
     <div className="container">
       <div className="row jumbotron">
@@ -47,8 +51,8 @@ function CurrentWeather (props) {
             </div>
             <div className="flex-item">
               <h5 className="uppercase">Wind</h5>
-              <p className="red-text text-lighten-2">{props.weather.wind.speed}</p>
-              <h5 className="uppercase label red-text text-lighten-2">mph</h5>
+              <p className="red-text text-lighten-2"><i className="material-icons" style={rotate}>arrow_upward</i></p>
+              <h5 className="uppercase label red-text text-lighten-2">{props.weather.wind.speed.toFixed(0)}mph</h5>
             </div>
           </div>
         </div>
