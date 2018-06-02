@@ -6,7 +6,7 @@ body {
 }
 
 .jumbotron {
-  padding: 50px;
+  padding: 0 50px 0;
   text-align: center;
 }
 
@@ -73,6 +73,11 @@ nav {
   font-size: 0.9em;
 }
 
+.flex-item > p.big {
+  font-size: 11em;
+  margin-top: -50px;
+}
+
 @media only screen and (max-width: 800px) {
   .label {
     margin-top: -20px;
@@ -100,9 +105,9 @@ nav {
     padding: 0;
   }
   .jumbotron {
-    padding: 50px 15px;
+    padding: 0 15px;
   }
-  .flex-box {
+  .flex-sm-column {
     flex-direction: column;
   }
   .flex-item {
@@ -117,5 +122,8 @@ nav {
   }
   .flex-item > p {
     font-size: 30px;
+  }
+  .flex-item > p.big {
+    font-size: 7em;
   }
 }

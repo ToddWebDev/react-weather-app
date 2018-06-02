@@ -17,18 +17,17 @@ function CurrentWeather (props) {
           <h5 className="uppercase">{props.weather.weather[0].description}</h5>
           <div className="flex-box">
             <div className="flex-item">
-              <h5 className="uppercase">Current<br/> Temperature</h5>
-              <p className="red-text text-lighten-2">{props.weather.main.temp.toFixed(0)}</p>
-              <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
-            </div>
-            <div className="flex-item">
-              <h5 className="uppercase">High<br/> Temperature</h5>
-              <p className="red-text text-lighten-2">{props.weather.main.temp_max.toFixed(0)}</p>
-              <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
-            </div>
-            <div className="flex-item">
-              <h5 className="uppercase">Low<br/> Temperature</h5>
+              <h5 className="uppercase">Low</h5>
               <p className="red-text text-lighten-2">{props.weather.main.temp_min.toFixed(0)}</p>
+              <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
+            </div>
+            <div className="flex-item">
+              <p className="red-text text-lighten-2 big">{props.weather.main.temp.toFixed(0)}</p>
+              <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
+            </div>
+            <div className="flex-item">
+              <h5 className="uppercase">High</h5>
+              <p className="red-text text-lighten-2">{props.weather.main.temp_max.toFixed(0)}</p>
               <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
             </div>
           </div>
@@ -69,7 +68,7 @@ function Forecast(props) {
     <div className="row jumbotron">
       <div className="col s12">
         <h3>Extended Forecast for <span className="uppercase">{props.weather.city.name}</span></h3>
-        <ul className="flex-box">
+        <ul className="flex-box flex-sm-column">
           {props.weather.list.map((day) => (
             <li className="flex-item" key={day.dt}>
               <h5 className="uppercase small blue-grey-text text-lighten-4">{day.day}</h5>
