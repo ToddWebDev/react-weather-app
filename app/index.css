@@ -111,6 +111,9 @@ i.material-icons {
   .jumbotron {
     padding: 0 15px;
   }
+  .jumbotron img {
+  margin-top: 0;
+}
   .flex-sm-column {
     flex-direction: column;
   }
