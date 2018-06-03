@@ -17,16 +17,20 @@ function CurrentWeather (props) {
       <div className="row jumbotron">
         <div className="col s12">
           <h3>Current Weather for <span className="uppercase">{props.weather.name}</span></h3>
-          <img className='weather' src={'./app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
-          <h5 className="uppercase">{props.weather.weather[0].description}</h5>
+          <div className='flex-box flex-sm-column'>
+            <div className="flex-item">
+              <p className="red-text text-lighten-2 big">{props.weather.main.temp.toFixed(0)}</p>
+              <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
+            </div>
+            <div className="flex-item">
+              <img className='weather' src={'./app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
+              <h5 className="uppercase">{props.weather.weather[0].description}</h5>
+            </div>
+          </div>
           <div className="flex-box">
             <div className="flex-item">
               <h5 className="uppercase">Low</h5>
               <p className="red-text text-lighten-2">{props.weather.main.temp_min.toFixed(0)}</p>
-              <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
-            </div>
-            <div className="flex-item">
-              <p className="red-text text-lighten-2 big">{props.weather.main.temp.toFixed(0)}</p>
               <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
             </div>
             <div className="flex-item">
