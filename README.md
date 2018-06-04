@@ -1,5 +1,5 @@
 # react-weather-app
-A React App scoffolded with create-react-app.
+A React App using Webpack module bundler.
 
 ## Getting Started
 
