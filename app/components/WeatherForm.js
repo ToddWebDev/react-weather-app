@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import {getCurrentWeather, getForecast} from '../utils/api'
 import PropTypes from 'prop-types'
 import {Redirect, Link} from 'react-router-dom'
