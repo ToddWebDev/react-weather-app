@@ -56,7 +56,7 @@ function CurrentWeather (props) {
             </div>
             <div className="flex-item">
               <h5 className="uppercase">Wind</h5>
-              <p className="red-text text-lighten-2"><i className="material-icons" style={rotate}>arrow_upward</i></p>
+              <p className="red-text text-lighten-2"><i className="material-icons" style={rotate}>arrow_downward</i></p>
               <h5 className="uppercase label red-text text-lighten-2">{props.weather.wind.speed.toFixed(0)} mph</h5>
             </div>
           </div>
