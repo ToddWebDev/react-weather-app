@@ -17,7 +17,7 @@ function CurrentWeather (props) {
     <div className="container">
       <div className="row jumbotron">
         <div className="col s12">
-          <h3>Current Weather for <span className="uppercase">{props.weather.name}</span></h3>
+          <h3>{props.weather.name}</h3>
           <div className='flex-box flex-sm-column'>
             <div className="flex-item">
               <p className="red-text text-lighten-2 big">{props.weather.main.temp.toFixed(0)}</p>
@@ -76,7 +76,7 @@ function Forecast(props) {
   return (
     <div className="row jumbotron">
       <div className="col s12">
-        <h3>Extended Forecast for <span className="uppercase">{props.weather.city.name}</span></h3>
+        <h3>{props.weather.city.name}</h3>
         <ul className="flex-box flex-sm-column">
           {props.weather.list.map((day) => (
             <li className="flex-item" key={day.dt}>
