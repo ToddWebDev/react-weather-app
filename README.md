@@ -1,9 +1,7 @@
 # react-weather-app
 A React App using Webpack module bundler.
 
-
-
-![React Weather App]: https://github.com/ToddWebDev/react-weather-app/blob/master/app/images/WeatherApp.gif "React Weather App"
+![alt tag](https://github.com/ToddWebDev/react-weather-app/blob/master/app/images/WeatherApp.gif?raw=true "Screenshots")
 
 ## Getting Started
 
