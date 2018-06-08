@@ -83,6 +83,7 @@ function Forecast(props) {
               <h5 className="uppercase small blue-grey-text text-lighten-4">{day.day}</h5>
               <h5 className="uppercase">{day.weather[0].description}</h5>
               <img className='weather small' src={'./app/images/weather-icons/' + day.weather[0].icon + '.svg'} alt='Weather' />
+              <p>{day.rainChance}</p>
               <br/>
               <p className="red-text text-lighten-2">{day.main.temp.toFixed(0)}</p>
               <h5 className="uppercase label red-text text-lighten-2">degrees</h5>
