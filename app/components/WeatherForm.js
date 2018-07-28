@@ -156,7 +156,7 @@ class WeatherForm extends React.Component {
               weather: weather
             }
           })
-        });
+        }).then((error) => console.log(error));
   }
   //Call API on button submit
   goToForecast = () => {

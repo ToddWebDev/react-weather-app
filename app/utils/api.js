@@ -32,6 +32,8 @@ export function getCurrentWeather (city) {
     .then(function (currentWeatherData) {
       return currentWeatherData.data
       console.log(currentWeather.data)
+    }).then(function (error) {
+      return error;
     })
 }
 
