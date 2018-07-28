@@ -5,7 +5,7 @@ A React App using Webpack module bundler.
 
 ## Getting Started
 
-Git clone this Repo.
+Clone this Repo.
 Run `npm install`
 Start Development Server with `npm run start`
 Project will open up in a new window.
